@@ -28,13 +28,16 @@ json_data['context']['dispatcher']['stores']['QuoteSummaryStore'].keys()
 
 annual_is = json_data['context']['dispatcher']['stores']['QuoteSummaryStore']['incomeStatementHistory']['incomeStatementHistory']
 
+print(annual_is)
+
 annual_cf_statement = []
 
 for s in annual_is:
     statement = {}
     for key, val in s.items():
         try:
-            statement[key] = val['raw']
+            ##options are: raw, fmt, longFmt
+            statement[key] = val['longFmt']
         except KeyError:
             continue
         except TypeError:
