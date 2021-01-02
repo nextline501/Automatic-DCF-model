@@ -9,6 +9,7 @@ url_stats = 'https://finance.yahoo.com/quote/{}?p={}'
 url_profile = 'https://finance.yahoo.com/quote/{}/profile?p={}'
 url_financials = 'https://finance.yahoo.com/quote/{}/financials?p={}'
 
+##Change Ticker Symbol to view diffrent stock
 stock = 'AAPL'
 
 response = requests.get(url_financials.format(stock, stock))
