@@ -10,7 +10,7 @@ url_profile = 'https://finance.yahoo.com/quote/{}/profile?p={}'
 url_financials = 'https://finance.yahoo.com/quote/{}/financials?p={}'
 
 ##Change Ticker Symbol to view diffrent stock
-stock = 'AAPL'
+stock = 'msft'
 
 response = requests.get(url_financials.format(stock, stock))
 
@@ -81,6 +81,7 @@ for s in annual_blanceSheet:
 ## FCF = Net income + intrest expense + 
 
 tax = 0.21
+margin_of_safty = 0.15
 capex = annual_cashflow_statement[0]['capitalExpenditures']
 depri = annual_cashflow_statement[0]['depreciation']
 ebit  = annual_incomeStatement_statement[0]['ebit']
@@ -99,7 +100,7 @@ print("Depreciation and Amortization: " + str(depri))
 print("CAPEX: " + str(capex))
 print("Change in (Current Assets - Current Liabilites): " + str(change_in_current_asset))
 print()
-unlevered_fcf = ((ebit * (1-tax)) + (depri) - (capex) - (change_in_current_asset))
+fcf = ((ebit * (1-tax)) + (depri) - (capex) - (change_in_current_asset)) * (1 - margin_of_safty)
 
-print("Free cashflow: " + str(unlevered_fcf))
+print("Free cashflow: " + str(fcf))
 print()
