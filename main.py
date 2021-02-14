@@ -10,7 +10,8 @@ url_profile = 'https://finance.yahoo.com/quote/{}/profile?p={}'
 url_financials = 'https://finance.yahoo.com/quote/{}/financials?p={}'
 
 ##Change Ticker Symbol to view diffrent stock
-stock = 'AAPL'
+print("Enter stock ticker: ")
+stock = str(input())
 
 response = requests.get(url_financials.format(stock, stock))
 
@@ -133,7 +134,7 @@ print("Expected_return: " + str(expected_return))
 print("CAPM: " + str(CAPM))
 print()
 print("Total equity: " + str(equity))
-print("Total liability: " + str(debt))
+print("Debt: " + str(debt))
 print("Tax rate: " + str(tax) + " %")
 print("Cost of debt: " + str(cost_of_debt))
 print("Cost of Equity: " + str(CAPM))
